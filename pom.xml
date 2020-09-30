@@ -9,6 +9,7 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.dunkware.sandbox</groupId>
 	<artifactId>dunkware-sandbox-spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -20,23 +21,27 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
 		<!-- need to add the JPA spring starter dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>2.3.4.RELEASE</version>
 		</dependency>
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-devtools</artifactId>
+	      <scope>runtime</scope>
+	   </dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>2.5.1</version>
 		</dependency>
 
 		<!-- jdbc driver dependnecy -->
@@ -56,6 +61,19 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<!-- aspect dependencis -->
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-aspects</artifactId>
+		</dependency>
+		
+		<!-- used in multiple datasource configuration -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 

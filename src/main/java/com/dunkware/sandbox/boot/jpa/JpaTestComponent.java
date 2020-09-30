@@ -4,38 +4,59 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.dunkware.sandbox.boot.jpa.milestone.repository.MilestoneRepository;
+import com.dunkware.sandbox.boot.jpa.model.milestone.MilestoneEntity;
+import com.dunkware.sandbox.boot.jpa.model.project.ProjectEntity;
+import com.dunkware.sandbox.boot.jpa.project.repository.ProjectRepository;
 
 @Component
 public class JpaTestComponent {
 
-	@Autowired
+	@Autowired(required = true)
 	private ProjectRepository projectRepo;
 	
-	@Autowired
-	private ProjectMilestoneRepository milestoneRepo;
+	@Autowired(required = true)
+	private MilestoneRepository milestoneRepo;
 	
-	// post construct
+	// post construct  
 	// means this method will be
 	// called when component is created
 	// at startup 
 	// we will "auto-wire" the things we need
+	@Test
 	@PostConstruct
 	public void init() { 
 		System.out.println("calling init method");
 		ProjectEntity project = new ProjectEntity();
-		project.setDescription("My wonderfull project");
+		project.setDescription("My wonderful project");
 		project.setName("My awesome name");
 		project.setStartDate(new Date());
 		// don't set end date
 		// use the save method on project repository to save entity 
 		// lets try this!
 		projectRepo.save(project);
+		System.out.println("-- Project Saved --");
 		
-		ProjectMilestoneEntity milestone = new ProjectMilestoneEntity();
+		MilestoneEntity milestone = new MilestoneEntity();
 		milestone.setName("teset milestone");
 		
 		milestoneRepo.save(milestone);
+		System.out.println("-- Project Milestone Saved --");
 	}
+	
+//	@Test
+//	@Transactional("customerTransactionManager")
+//    public void create_check_customer() {
+//
+//        CustomerModel customer = new CustomerModel("user@www.javadevjournal.com","Robert","Hickle");
+//        customer = customerRepository.save(customer);
+//
+//        assertNotNull(customerRepository.findById(customer.getId()));
+//        assertEquals(customerRepository.findById(customer.getId()).get().getEmail() ,"user@www.javadevjournal.com");
+//    }
+//	
 }
