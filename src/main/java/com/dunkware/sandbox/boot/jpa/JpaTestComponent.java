@@ -27,7 +27,7 @@ public class JpaTestComponent {
 	// called when component is created
 	// at startup 
 	// we will "auto-wire" the things we need
-	@Test
+	//@Test
 	@PostConstruct
 	public void init() { 
 		System.out.println("calling init method");
@@ -47,16 +47,4 @@ public class JpaTestComponent {
 		milestoneRepo.save(milestone);
 		System.out.println("-- Project Milestone Saved --");
 	}
-	
-//	@Test
-//	@Transactional("customerTransactionManager")
-//    public void create_check_customer() {
-//
-//        CustomerModel customer = new CustomerModel("user@www.javadevjournal.com","Robert","Hickle");
-//        customer = customerRepository.save(customer);
-//
-//        assertNotNull(customerRepository.findById(customer.getId()));
-//        assertEquals(customerRepository.findById(customer.getId()).get().getEmail() ,"user@www.javadevjournal.com");
-//    }
-//	
 }
